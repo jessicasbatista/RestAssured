@@ -42,55 +42,55 @@ public class Chapter1Test {
     public void requestUsZipCode90210_checkPlaceNameInResponseBody_expectBeverlyHills(){
 
         given().
-                spec(requestSpec).
+              spec(requestSpec).
         when().
-            get("us/90210").
+              get("us/90210").
         then().
-            spec(responseSpec).
+              spec(responseSpec).
         and().
-            assertThat().
-            body("places[0].'place name'", equalTo("Beverly Hills"));
+             assertThat().
+             body("places[0].'place name'", equalTo("Beverly Hills"));
     }
 
     @Test
     public void requestUsZipCode90210_checkPlaceNameInResponseBody_expectCalifornia(){
 
         given().
-                spec(requestSpec).
+               spec(requestSpec).
         when().
-                get("us/90210").
+              get("us/90210").
         then().
-                spec(responseSpec).
+              spec(responseSpec).
         and().
-                assertThat().
-                body("places[0].'state'", equalTo("California"));
+             assertThat().
+             body("places[0].'state'", equalTo("California"));
     }
 
     @Test
     public void requestUsZipCode90210_checkPlaceNameInResponseBody_expectContainsBeverlyHills(){
 
         given().
-                spec(requestSpec).
+              spec(requestSpec).
         when().
-                get("us/90210").
+              get("us/90210").
         then().
-                spec(responseSpec).
+              spec(responseSpec).
         and().
-                assertThat().
-                body("places. 'place name'", hasItem("Beverly Hills"));
+             assertThat().
+             body("places. 'place name'", hasItem("Beverly Hills"));
     }
 
     @Test
     public void requestUsZipCode90210_checkNumberOfPlaceNamesInResponseBody_expectOne(){
 
         given().
-                spec(requestSpec).
+               spec(requestSpec).
         when().
-            get("us/90210").
+              get("us/90210").
         then().
-                spec(responseSpec).
+              spec(responseSpec).
         and().
-            assertThat().
-            body("places. 'place name'", hasSize(1));
+             assertThat().
+             body("places. 'place name'", hasSize(1));
     }
 }
