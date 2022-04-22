@@ -13,35 +13,31 @@ public class Chapter2Test {
 
         given().
         when().
-            get("http://api.zippopotam.us/us/90210").
+              get("http://api.zippopotam.us/us/90210").
         then().
-            assertThat().
-            statusCode(200);
+              assertThat().
+              statusCode(200);
     }
 
     @Test
     public void requestUsZipCode90210_checkContentType_expectApplicationJson(){
 
         given().
-                when().
-                get("http://api.zippopotam.us/us/90210").
+               when().
+               get("http://api.zippopotam.us/us/90210").
         then().
-                assertThat().
-                contentType(ContentType.JSON);
+              assertThat().
+              contentType(ContentType.JSON);
     }
 
     @Test
     public void requestUsZipCode90210_logRequestAndResponseDetails(){
 
         given().
-                log().all().
+               log().all().
         when().
-                get("http://api.zippopotam.us/us/90210").
+              get("http://api.zippopotam.us/us/90210").
         then().
-                log().body();
+              log().body();
     }
-
-
-
-
 }
