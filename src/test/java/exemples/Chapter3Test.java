@@ -14,21 +14,19 @@ public class Chapter3Test {
                 {"us", "90210", "Beverly Hills"},
                 {"us", "12345", "Schenectady"}
         };
-
     }
 
     @Test(dataProvider = "zipCodeAndPlaces")
     public void requestUsZipCode90210_checkPlaceNameInResponseBody_expectBeverlyHills(String countryCode, String zipCode, String expectedPlaceName){
 
         given().
-            pathParam("countryCode", countryCode).
-            pathParam("zipCode", zipCode).
-            log().all().
+               pathParam("countryCode", countryCode).
+               pathParam("zipCode", zipCode).
+               log().all().
         when().
-            get("http://api.zippopotam.us/{countryCode}/{zipCode}").
+              get("http://api.zippopotam.us/{countryCode}/{zipCode}").
         then().
-            log().body().
-            assertThat().body("places[0].'place name'", equalTo(expectedPlaceName));
+              log().body().
+              assertThat().body("places[0].'place name'", equalTo(expectedPlaceName));
     }
-
 }
